@@ -1,7 +1,7 @@
 package com.brasRobot.javabeans;
 import java.io.Serializable;
 public class Media implements Serializable {
-    //classe du media
+    //attribut du media
     private boolean laser; 
     private int volume;
     Servo servo = new Servo();

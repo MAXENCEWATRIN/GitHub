@@ -1,7 +1,7 @@
 package com.brasRobot.javabeans;
 import java.io.Serializable;
 public class Preference implements Serializable {
-    //classe de mes preference
+    //attribut de mes preference
     private String libellePref; 
     private int positionXPref;
     private int positionYPref;

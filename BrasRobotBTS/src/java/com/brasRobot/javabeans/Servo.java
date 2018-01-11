@@ -1,7 +1,7 @@
 package com.brasRobot.javabeans;
 import java.io.Serializable;
 public class Servo implements Serializable {
-    //classedu servoMoteur
+    //attribut du servoMoteur
     private String libelleServo; 
     private int positionXServo;
     private int positionYServo;
