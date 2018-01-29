@@ -44,42 +44,20 @@ public class StepperDemo {
 						this.stepper.getStepPerRev(),
 						this.stepper.getSecPerStep(),
 						nbSteps));
-				if (keepGoing) {
-					System.out.println("-- 1. Single coil steps --");
-					System.out.println("  Forward");
-					this.stepper.step(nbSteps, AdafruitMotorHAT.ServoCommand.FORWARD, AdafruitMotorHAT.Style.SINGLE);
-				}
-				if (keepGoing) {
-					System.out.println("  Backward");
-					this.stepper.step(nbSteps, AdafruitMotorHAT.ServoCommand.BACKWARD, AdafruitMotorHAT.Style.SINGLE);
-				}
+
 				if (keepGoing) {
 					System.out.println("-- 2. Double coil steps --");
 					System.out.println("  Forward");
 					this.stepper.step(nbSteps, AdafruitMotorHAT.ServoCommand.FORWARD, AdafruitMotorHAT.Style.DOUBLE);
 				}
+
+        */
 				if (keepGoing) {
 					System.out.println("  Backward");
 					this.stepper.step(nbSteps, AdafruitMotorHAT.ServoCommand.BACKWARD, AdafruitMotorHAT.Style.DOUBLE);
 				}
-				if (keepGoing) {
-					System.out.println("-- 3. Interleaved coil steps --");
-					System.out.println("  Forward");
-					this.stepper.step(nbSteps, AdafruitMotorHAT.ServoCommand.FORWARD, AdafruitMotorHAT.Style.INTERLEAVE);
-				}
-				if (keepGoing) {
-					System.out.println("  Backward");
-					this.stepper.step(nbSteps, AdafruitMotorHAT.ServoCommand.BACKWARD, AdafruitMotorHAT.Style.INTERLEAVE);
-				}
-				if (keepGoing) {
-					System.out.println("-- 4. Microsteps --");
-					System.out.println("  Forward");
-					this.stepper.step(nbSteps, AdafruitMotorHAT.ServoCommand.FORWARD, AdafruitMotorHAT.Style.MICROSTEP);
-				}
-				if (keepGoing) {
-					System.out.println("  Backward");
-					this.stepper.step(nbSteps, AdafruitMotorHAT.ServoCommand.BACKWARD, AdafruitMotorHAT.Style.MICROSTEP);
-				}
+        /*
+
 			} catch (IOException ioe) {
 				ioe.printStackTrace();
 			}
@@ -94,9 +72,7 @@ public class StepperDemo {
 		if (mh != null) {
 			try { // Release all
 				mh.getMotor(AdafruitMotorHAT.Motor.M1).run(AdafruitMotorHAT.ServoCommand.RELEASE);
-				mh.getMotor(AdafruitMotorHAT.Motor.M2).run(AdafruitMotorHAT.ServoCommand.RELEASE);
 				mh.getMotor(AdafruitMotorHAT.Motor.M3).run(AdafruitMotorHAT.ServoCommand.RELEASE);
-				mh.getMotor(AdafruitMotorHAT.Motor.M4).run(AdafruitMotorHAT.ServoCommand.RELEASE);
 			} catch (IOException ioe) {
 				ioe.printStackTrace();
 			}
