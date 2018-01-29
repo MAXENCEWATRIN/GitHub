@@ -1,0 +1,153 @@
+' ******************************************************************************
+' swxJRNL.swj - journal recorded on 01/17/18 by Maxence
+' *****************************************************************************
+Dim swApp As Object
+Dim Part As Object
+Dim boolstatus As Boolean
+Dim longstatus As Long
+Dim Annotation As Object
+Dim Gtol As Object
+Dim DatumTag As Object
+Dim FeatureData As Object
+Dim Feature As Object
+Dim Component As Object
+Sub main()
+
+Set swApp = Application.SldWorks
+
+Set Part = swApp.OpenDoc4 ("C:\Users\Maxence\Documents\GitHub\GitHub\piece\Projet\Bouchon_v2.SLDPRT", 1, 0, "", longstatus)
+Set Part = swApp.ActivateDoc ("Bouchon_v2.SLDPRT")
+Part.ActiveView().RotateAboutCenter -0, -0.00730603
+Part.ActiveView().RotateAboutCenter -0.069748, -0.876724
+Part.ActiveView().RotateAboutCenter -0.00410283, -0.0292241
+Part.ActiveView().RotateAboutCenter -0.00820565, -0.0438362
+Part.ActiveView().RotateAboutCenter -0.00410283, -0.0438362
+Part.ActiveView().RotateAboutCenter -0.00410283, -0.0584482
+Part.ActiveView().RotateAboutCenter -0.00820565, -0.0730603
+Part.ActiveView().RotateAboutCenter -0.00410283, -0.0803663
+Part.ActiveView().RotateAboutCenter -0.00820565, -0.0803663
+Part.ActiveView().RotateAboutCenter -0, -0.0438362
+Part.ActiveView().RotateAboutCenter -0.00410283, -0.0146121
+Part.ActiveView().RotateAboutCenter -0, 0.00730603
+Part.ActiveView().RotateAboutCenter 0.00410283, 0.0146121
+Part.ActiveView().RotateAboutCenter -0, 0.0219181
+Part.ActiveView().RotateAboutCenter 0.00820565, 0.0365301
+Part.ActiveView().RotateAboutCenter 0.00820565, 0.0511422
+Part.ActiveView().RotateAboutCenter 0.00410283, 0.0365301
+Part.ActiveView().RotateAboutCenter 0.00410283, 0.0365301
+Part.ActiveView().RotateAboutCenter -0, 0.0219181
+Part.ActiveView().RotateAboutCenter -0, 0.00730603
+Part.ActiveView().RotateAboutCenter -0, 0.00730603
+Part.ActiveView().RotateAboutCenter -0, 0.00730603
+Part.ActiveView().RotateAboutCenter 0.00410283, 0
+Part.ActiveView().RotateAboutCenter -0, 0.00730603
+Part.ActiveView().RotateAboutCenter 0.00410283, 0.0146121
+Part.ActiveView().RotateAboutCenter -0, 0.0146121
+Part.ActiveView().RotateAboutCenter 0.00410283, 0.00730603
+Part.ActiveView().RotateAboutCenter -0, 0.0146121
+Part.ActiveView().RotateAboutCenter -0, 0.00730603
+Part.ActiveView().RotateAboutCenter -0, 0.00730603
+Part.ActiveView().RotateAboutCenter 0.00410283, 0.00730603
+Part.ActiveView().RotateAboutCenter -0, 0.00730603
+Set Part = Nothing
+swApp.CloseDoc "Bouchon_v2.SLDPRT"
+Set Part = swApp.OpenDoc4 ("C:\Users\Maxence\Documents\GitHub\GitHub\piece\Projet\Plateforme_v1.SLDPRT", 1, 0, "", longstatus)
+Set Part = swApp.ActivateDoc ("Plateforme_v1.SLDPRT")
+Part.ActiveView().RotateAboutCenter 0.00410283, 0
+Part.ActiveView().RotateAboutCenter 0.00410283, -0.00730603
+Part.ActiveView().RotateAboutCenter 0.00410283, 0
+Part.ActiveView().RotateAboutCenter 0.00410283, -0.0146121
+Part.ActiveView().RotateAboutCenter 0.0164113, -0.0146121
+Part.ActiveView().RotateAboutCenter 0.00820565, -0.0146121
+Part.ActiveView().RotateAboutCenter 0.00820565, -0.0146121
+Part.ActiveView().RotateAboutCenter 0.00820565, -0.0219181
+Part.ActiveView().RotateAboutCenter 0.00820565, -0.0292241
+Part.ActiveView().RotateAboutCenter 0.00410283, -0.0292241
+Part.ActiveView().RotateAboutCenter 0.00820565, -0.0292241
+Part.ActiveView().RotateAboutCenter 0.00410283, -0.0365301
+Part.ActiveView().RotateAboutCenter 0.00820565, -0.0438362
+Part.ActiveView().RotateAboutCenter 0.00820565, -0.0438362
+Part.ActiveView().RotateAboutCenter 0.00820565, -0.0511422
+Part.ActiveView().RotateAboutCenter 0.0123085, -0.0584482
+Part.ActiveView().RotateAboutCenter 0.00820565, -0.0365301
+Part.ActiveView().RotateAboutCenter 0.0123085, -0.0584482
+Part.ActiveView().RotateAboutCenter 0.0164113, -0.0730603
+Part.ActiveView().RotateAboutCenter 0.0123085, -0.0730603
+Part.ActiveView().RotateAboutCenter 0.0205141, -0.0803663
+Part.ActiveView().RotateAboutCenter 0.0123085, -0.0803663
+Part.ActiveView().RotateAboutCenter 0.0123085, -0.0584482
+Part.ActiveView().RotateAboutCenter 0.00820565, -0.0511422
+Part.ActiveView().RotateAboutCenter 0.00820565, -0.0584482
+Part.ActiveView().RotateAboutCenter 0.00820565, -0.0438362
+Part.ActiveView().RotateAboutCenter 0.00820565, -0.0438362
+Part.ActiveView().RotateAboutCenter 0.00820565, -0.0584482
+Part.ActiveView().RotateAboutCenter 0.00410283, -0.0511422
+Part.ActiveView().RotateAboutCenter 0.00410283, -0.0511422
+Part.ActiveView().RotateAboutCenter -0, -0.0292241
+Part.ActiveView().RotateAboutCenter 0.00410283, -0.0292241
+Part.ActiveView().RotateAboutCenter -0, -0.0292241
+Part.ActiveView().RotateAboutCenter -0, -0.0146121
+Part.ActiveView().RotateAboutCenter -0, -0.00730603
+Part.ActiveView().RotateAboutCenter -0, -0.00730603
+Part.ActiveView().RotateAboutCenter -0, -0.0219181
+Part.ActiveView().RotateAboutCenter -0, -0.0219181
+Part.ActiveView().RotateAboutCenter -0, -0.0219181
+Part.ActiveView().RotateAboutCenter -0, -0.0292241
+Part.ActiveView().RotateAboutCenter 0.00410283, -0.0219181
+Part.ActiveView().RotateAboutCenter -0, -0.00730603
+Part.ActiveView().RotateAboutCenter -0, -0.00730603
+Part.ActiveView().RotateAboutCenter -0, -0.00730603
+Part.ActiveView().RotateAboutCenter -0, -0.00730603
+Part.ActiveView().RotateAboutCenter -0, -0.00730603
+Part.ActiveView().RotateAboutCenter -0, 0.00730603
+Part.ActiveView().RotateAboutCenter -0, 0.0146121
+Part.ActiveView().RotateAboutCenter -0.00410283, 0.0292241
+Part.ActiveView().RotateAboutCenter -0, 0.0219181
+Part.ActiveView().RotateAboutCenter -0.00410283, 0.0146121
+Part.ActiveView().RotateAboutCenter -0, 0.00730603
+Part.ActiveView().RotateAboutCenter -0, 0.00730603
+Part.ActiveView().RotateAboutCenter 0.00410283, 0.0584482
+Part.ActiveView().RotateAboutCenter 0.0123085, 0.0584482
+Part.ActiveView().RotateAboutCenter 0.0164113, 0.131509
+Part.ActiveView().RotateAboutCenter 0.0123085, 0.124203
+Part.ActiveView().RotateAboutCenter 0.0123085, 0.146121
+Part.ActiveView().RotateAboutCenter 0.0123085, 0.131509
+Part.ActiveView().RotateAboutCenter 0.0164113, 0.146121
+Part.ActiveView().RotateAboutCenter 0.00410283, 0.102284
+Part.ActiveView().RotateAboutCenter 0.00410283, 0.0657543
+Part.ActiveView().RotateAboutCenter 0.00410283, 0.0730603
+Part.ActiveView().RotateAboutCenter 0.00410283, 0.0365301
+Part.ActiveView().RotateAboutCenter -0, 0.0511422
+Part.ActiveView().RotateAboutCenter 0.00820565, 0.0584482
+Part.ActiveView().RotateAboutCenter 0.00820565, 0.0584482
+Part.ActiveView().RotateAboutCenter 0.00410283, 0.0730603
+Part.ActiveView().RotateAboutCenter 0.0123085, 0.0657543
+Part.ActiveView().RotateAboutCenter 0.00820565, 0.0511422
+Part.ActiveView().RotateAboutCenter 0.0123085, 0.0438362
+Part.ActiveView().RotateAboutCenter 0.0123085, 0.0584482
+Part.ActiveView().RotateAboutCenter 0.00820565, 0.0365301
+Part.ActiveView().RotateAboutCenter 0.0123085, 0.0292241
+Part.ActiveView().RotateAboutCenter 0.0123085, 0.0365301
+Part.ActiveView().RotateAboutCenter 0.0123085, 0.0292241
+Part.ActiveView().RotateAboutCenter 0.00820565, 0.0292241
+Part.ActiveView().RotateAboutCenter 0.0123085, 0.0292241
+Part.ActiveView().RotateAboutCenter 0.0123085, 0.0292241
+Part.ActiveView().RotateAboutCenter 0.00820565, 0.0292241
+Part.ActiveView().RotateAboutCenter 0.00820565, 0.0219181
+Part.ActiveView().RotateAboutCenter 0.00820565, 0.0146121
+Part.ActiveView().RotateAboutCenter 0.0164113, 0.0365301
+Part.ActiveView().RotateAboutCenter 0.00820565, 0.0365301
+Part.ActiveView().RotateAboutCenter 0.0123085, 0.0365301
+Part.ActiveView().RotateAboutCenter 0.00410283, 0.0146121
+Part.ActiveView().RotateAboutCenter 0.00820565, 0.0146121
+Part.ActiveView().RotateAboutCenter 0.0123085, 0.0219181
+Part.ActiveView().RotateAboutCenter 0.00820565, 0.0292241
+Part.ActiveView().RotateAboutCenter 0.00820565, 0.0219181
+Part.ActiveView().RotateAboutCenter 0.00820565, 0.0365301
+Part.ActiveView().RotateAboutCenter 0.00820565, 0.0219181
+Part.ActiveView().RotateAboutCenter 0.00410283, 0.00730603
+Part.ActiveView().RotateAboutCenter -0, 0.0146121
+Set Part = Nothing
+swApp.CloseDoc "Plateforme_v1.SLDPRT"
+swApp.ExitApp
+End Sub
