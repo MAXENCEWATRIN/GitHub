@@ -62,6 +62,27 @@ public class StepperDemo {
 					System.out.println("  Backward");
 					this.stepper.step(nbSteps, AdafruitMotorHAT.ServoCommand.BACKWARD, AdafruitMotorHAT.Style.DOUBLE);
 				}
+				if (keepGoing) {
+					System.out.println("-- 3. Interleaved coil steps --");
+					System.out.println("  Forward");
+					this.stepper.step(nbSteps, AdafruitMotorHAT.ServoCommand.FORWARD, AdafruitMotorHAT.Style.INTERLEAVE);
+				}
+				if (keepGoing) {
+					System.out.println("  Backward");
+					this.stepper.step(nbSteps, AdafruitMotorHAT.ServoCommand.BACKWARD, AdafruitMotorHAT.Style.INTERLEAVE);
+				}
+				if (keepGoing) {
+					System.out.println("-- 4. Microsteps --");
+					System.out.println("  Forward");
+					this.stepper.step(nbSteps, AdafruitMotorHAT.ServoCommand.FORWARD, AdafruitMotorHAT.Style.MICROSTEP);
+				}
+				if (keepGoing) {
+					System.out.println("  Backward");
+					this.stepper.step(nbSteps, AdafruitMotorHAT.ServoCommand.BACKWARD, AdafruitMotorHAT.Style.MICROSTEP);
+				}
+			} catch (IOException ioe) {
+				ioe.printStackTrace();
+			}
 			System.out.println("==== Again! ====");
 		}
 		System.out.println("... Done with the demo ...");
