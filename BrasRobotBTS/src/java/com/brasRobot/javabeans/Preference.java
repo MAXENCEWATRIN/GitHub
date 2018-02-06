@@ -1,36 +1,50 @@
 package com.brasRobot.javabeans;
 import java.io.Serializable;
+import javax.ejb.Stateless;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+@Entity
+@Stateless 
 public class Preference implements Serializable {
-    //attribut de mes preference
-    private String libellePref; 
-    private int positionXPref;
-    private int positionYPref;
-    private int positionZPref;
-    //
-    public Preference() 
-    {}//Get-Set
-    public String getLibellePref() 
-    {return libellePref;}
-    
-    public void setLibellePref(String libellePref) 
-    {this.libellePref = libellePref;}
-    
-    public int getPositionXPref()
-    {return positionXPref;}
-    
-    public void setPositionXPref(int positionXPref)
-    {this.positionXPref = positionXPref;}
-    
-    public int getPositionYPref() 
-    {return positionYPref;}
-    
-    public void setPositionYPref(int positionYPref) 
-    {this.positionYPref = positionYPref;}
-    
-    public int getPositionZPref() 
-    {return positionZPref;}
-    
-    public void setPositionZPref(int positionZPref)
-    {this.positionZPref = positionZPref;}
-    //
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+int IdPreference;
+String nomPreference;
+String image;
+int preferencePositionX;
+int preferencePositionY;
+int preferencePositionZ;
+//get set
+    public String getNomPreference() {
+        return nomPreference;
+    }
+    public void setNomPreference(String nomPreference) {
+        this.nomPreference = nomPreference;
+    }
+    public int getPreferencePositionX() {
+        return preferencePositionX;
+    }
+    public void setPreferencePositionX(int preferencePositionX) {
+        this.preferencePositionX = preferencePositionX;
+    }
+    public int getPreferencePositionY() {
+        return preferencePositionY;
+    }
+    public void setPreferencePositionY(int preferencePositionY) {
+        this.preferencePositionY = preferencePositionY;
+    }
+    public int getPreferencePositionZ() {
+        return preferencePositionZ;
+    }
+    public void setPreferencePositionZ(int preferencePositionZ) {
+        this.preferencePositionZ = preferencePositionZ;
+    }
+    public String getImage() {
+        return image;
+    }
+    public void setImage(String image) {
+        this.image = image;
+    }  
 }

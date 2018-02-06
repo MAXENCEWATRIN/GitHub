@@ -6,7 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <!-- entete-->
  <h:head>
-        <title>Acceuil</title>
+        <title>preference</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>      
     </h:head>
     <h:body>
@@ -14,15 +14,15 @@
             <!-- barre de menu -->
             <p:breadCrumb>
                 <p:menuitem action="#{liste.accueil()}" value="acceuil"/>
-                <p:menuitem action="#{liste.laser()}" value="laser" />
-                <p:menuitem action="#{liste.preference()}" value="preference" />
+                <p:menuitem action="#{liste.preferenceEditer()}" value="editer"/>
             </p:breadCrumb> 
             <!--corps de texte-->         
             <p:dataTable var="object" value="">         
                 <p:column>     
-                    <f:facet name="header">Acceuil</f:facet>
+                    <f:facet name="header">preference</f:facet>
                 </p:column>
             </p:dataTable>
+            
         </h:form>
     </h:body>
 </html>

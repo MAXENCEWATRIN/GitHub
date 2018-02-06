@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <!--entete-->
+    <h:head>
+        <title>laser</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>      
+        <h:form>           
+            <!--barre de menu -->
+            <p:breadCrumb>
+                <p:menuitem action="#{liste.accueil()}" value="accueil"/>
+            </p:breadCrumb>   
+            <!--titre-->
+            <p:dataTable var="object" value="">         
+                <p:column>     
+                    <f:facet name="header">laser</f:facet>
+                </p:column>
+            </p:dataTable>
+
+            <!--corps de texte, boolean Camera et wifi, int son -->
+            <p:growl id="msg" />
+            <h:panelGrid columns="2" cellpadding="5">
+                               
+                <h:outputText value="Camera:" />
+                <p:selectBooleanCheckbox value="#{viewAjax.rasberry.cameraActif}">
+                    <p:ajax update="msg" listener="#{viewAjax.addMessageCamera()}" />
+                </p:selectBooleanCheckbox>
+
+                <h:outputText value="laser:" />
+                <p:selectBooleanCheckbox value="#{viewAjax.rasberry.laser}">
+                    <p:ajax update="msg" listener="#{viewAjax.addMessageLaser()}" />
+                </p:selectBooleanCheckbox>
+                
+                <h:outputLabel for="minMax" value="Son:" />
+                <p:spinner id="minMax" value="#{viewAjax.rasberry.son}" min="0" max="100" />
+            </h:panelGrid>
+            <h:outputText id="txt_count" value="#{viewAjax.number()}" />
+                
+        </h:form>
+    </h:body>
+</html>
