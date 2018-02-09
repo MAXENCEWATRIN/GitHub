@@ -1,21 +1,22 @@
-package com.brasRobot.javabeans;
+package com.brasRobot.JavaBeans;
 import java.io.Serializable;
 import javax.ejb.Stateless;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 @Entity
-@Stateless 
+@Stateless
 public class Preference implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-int IdPreference;
-String nomPreference;
-String image;
-int preferencePositionX;
-int preferencePositionY;
-int preferencePositionZ;
+    int IdPreference;
+    String nomPreference;
+    String image;
+    int preferencePositionX=200;
+    int preferencePositionY=200;
+    int preferencePositionZ=200;
 //get set
     public String getNomPreference() {
         return nomPreference;
@@ -47,4 +48,10 @@ int preferencePositionZ;
     public void setImage(String image) {
         this.image = image;
     }  
+    public int getIdPreference() {
+        return IdPreference;
+    }
+    public void setIdPreference(int IdPreference) {
+        this.IdPreference = IdPreference;
+    }
 }

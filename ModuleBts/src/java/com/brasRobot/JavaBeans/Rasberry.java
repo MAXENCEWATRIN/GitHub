@@ -1,18 +1,21 @@
-package com.brasRobot.javabeans;
+package com.brasRobot.JavaBeans;
 import java.io.Serializable;
 import javax.ejb.Stateless;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 @Entity
-@Stateless 
+@Stateless
 public class Rasberry implements Serializable{ 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int IdRasberry;
     int son;
     boolean laser;
     boolean cameraActif;
-     public Rasberry() {
+    public Rasberry() {
     }
      //get-set
     public int getSon() {
@@ -33,4 +36,11 @@ public class Rasberry implements Serializable{
     }
     public void setCameraActif(boolean cameraActif) {
         this.cameraActif = cameraActif;
-    }}
+    }
+    public int getIdRasberry() {
+        return IdRasberry;
+    }
+    public void setIdRasberry(int IdRasberry) {
+        this.IdRasberry = IdRasberry;
+    }  
+}

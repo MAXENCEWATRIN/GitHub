@@ -20,26 +20,28 @@
                     <f:facet name="header">laser</f:facet>
                 </p:column>
             </p:dataTable>
-
             <!--corps de texte, boolean Camera et wifi, int son -->
             <p:growl id="msg" />
             <h:panelGrid columns="2" cellpadding="5">
                                
                 <h:outputText value="Camera:" />
-                <p:selectBooleanCheckbox value="#{viewAjax.rasberry.cameraActif}">
-                    <p:ajax update="msg" listener="#{viewAjax.addMessageCamera()}" />
+                <p:selectBooleanCheckbox value="#{javaBeans.rasberry.cameraActif}">
+                    <p:ajax update="msg" listener="#{javaBeans.addMessageCamera()}" />
                 </p:selectBooleanCheckbox>
 
                 <h:outputText value="laser:" />
-                <p:selectBooleanCheckbox value="#{viewAjax.rasberry.laser}">
-                    <p:ajax update="msg" listener="#{viewAjax.addMessageLaser()}" />
+                <p:selectBooleanCheckbox value="#{javaBeans.rasberry.laser}">
+                    <p:ajax update="msg" listener="#{javaBeans.addMessageLaser()}" />
                 </p:selectBooleanCheckbox>
                 
                 <h:outputLabel for="minMax" value="Son:" />
-                <p:spinner id="minMax" value="#{viewAjax.rasberry.son}" min="0" max="100" />
+                <p:spinner id="minMax" value="#{javaBeans.rasberry.son}" min="0" max="100" />
             </h:panelGrid>
-            <h:outputText id="txt_count" value="#{viewAjax.number()}" />
-                
+              
+            <!-- ajout de tout les classes vu au dessus-->
+            <h:panelGrid columns="4" cellpadding="8"> <!--Taille -->
+                <p:commandButton action="#{javaBeans.ajouterLaser()}" value="Ajouter le laser"/> 
+            </h:panelGrid>
         </h:form>
     </h:body>
 </html>
