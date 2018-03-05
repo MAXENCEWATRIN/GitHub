@@ -22,7 +22,21 @@
                     <f:facet name="header">preference</f:facet>
                 </p:column>
             </p:dataTable>
-            
+            <p:dataTable var="object" value="#{javaBeans.listerPreference()}" >
+                <p:column>
+                    <f:facet name="header">Id</f:facet>
+                    <h:outputText value="#{object.idPreference}"/>
+                </p:column>   
+                 <p:column>           
+                     <f:facet name="header">Groupe De Musique</f:facet>
+                     <h:outputText value="#{object.nomPreference}"/>
+                </p:column> 
+                <p:column>      
+                    <f:facet name="header">image du groupe</f:facet>
+                    <h:outputText value="#{object.image}"/>
+                </p:column> 
+                                 
+            </p:dataTable> 
         </h:form>
     </h:body>
 </html>

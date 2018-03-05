@@ -10,20 +10,19 @@ public class Liste implements Serializable {
      System.out.println("Dans l'accueil");        
         return "accueil";
     }
-    //laser
+    //laser(laser,camera,son)
     public String laser() {
     System.out.println("Dans le laser");
       return "laser";
     }   
-    //preference
+    //preference(list:nom,image)
     public String preference() {
     System.out.println("Dans la preference");
       return "preference";
     }  
-     //preferenceEditer
+     //editer la preference(nom,image)
     public String preferenceEditer() {
     System.out.println("Dans la preferenceEditer");
       return "preferenceEditer";
-    }
-    
+    }  
 }
