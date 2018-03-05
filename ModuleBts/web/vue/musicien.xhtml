@@ -5,7 +5,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <!--entete-->
     <h:head>
-        <title>laser</title>
+        <title>musicien</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>      
@@ -17,30 +17,33 @@
             <!--titre-->
             <p:dataTable var="object" value="">         
                 <p:column>     
-                    <f:facet name="header">laser</f:facet>
+                    <f:facet name="header">musicien</f:facet>
                 </p:column>
             </p:dataTable>
-            <!--corps de texte, boolean Camera et wifi, int son -->
+            <!--corps de texte -->
             <p:growl id="msg" />
             <h:panelGrid columns="2" cellpadding="5">
-                               
+                 <!--nom -->
+                <h:outputText value="nom du musique:" /><!--libelle -->
+                <p:inputText id="groupe" value="#{javaBeans.musicien.nom}" title="inserer un musicien" />
+                <p:tooltip id="toolTipIdentifiant" for="groupe" showEvent="focus" hideEvent="blur" />
+                 <!--camera -->               
                 <h:outputText value="Camera:" />
-                <p:selectBooleanCheckbox value="#{javaBeans.rasberry.cameraActif}">
+                <p:selectBooleanCheckbox value="#{javaBeans.musicien.camera}">
                     <p:ajax update="msg" listener="#{javaBeans.addMessageCamera()}" />
                 </p:selectBooleanCheckbox>
-
+                <!--laser -->
                 <h:outputText value="laser:" />
-                <p:selectBooleanCheckbox value="#{javaBeans.rasberry.laser}">
+                <p:selectBooleanCheckbox value="#{javaBeans.musicien.laser}">
                     <p:ajax update="msg" listener="#{javaBeans.addMessageLaser()}" />
                 </p:selectBooleanCheckbox>
-                
+                 <!--son -->
                 <h:outputLabel for="minMax" value="Son:" />
-                <p:spinner id="minMax" value="#{javaBeans.rasberry.son}" min="0" max="100" />
-            </h:panelGrid>
-              
+                <p:spinner id="minMax" value="#{javaBeans.musicien.son}" min="0" max="100" />   
+            </h:panelGrid>             
             <!-- ajout de tout les classes vu au dessus-->
-            <h:panelGrid columns="4" cellpadding="8"> <!--Taille -->
-                <p:commandButton action="#{javaBeans.ajouterLaser()}" value="Ajouter le laser"/> 
+            <h:panelGrid columns="4" cellpadding="8">
+                <p:commandButton action="#{javaBeans.ajouterMusicien()}" value="Ajouter le musicien"/> 
             </h:panelGrid>
         </h:form>
     </h:body>

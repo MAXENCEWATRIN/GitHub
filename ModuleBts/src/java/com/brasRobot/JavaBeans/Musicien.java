@@ -5,25 +5,34 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 @Entity
 @Stateless
-public class Rasberry implements Serializable{ 
+public class Musicien implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int IdRasberry;
+    int IdMusicien;
+    String nom;
     int son;
     boolean laser;
-    boolean cameraActif;
-    public Rasberry() {
+    boolean camera;
+//get set
+    public int getIdMusicien() {
+        return IdMusicien;
     }
-     //get-set
+    public void setIdMusicien(int IdMusicien) {
+        this.IdMusicien = IdMusicien;
+    }
+    public String getNom() {
+        return nom;
+    }
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
     public int getSon() {
         return son;
     }
     public void setSon(int son) {
         this.son = son;
-        System.out.println("le son est de: "+son);
     }
     public boolean isLaser() {
         return laser;
@@ -31,16 +40,10 @@ public class Rasberry implements Serializable{
     public void setLaser(boolean laser) {
         this.laser = laser;
     }
-    public boolean isCameraActif() {
-        return cameraActif;
+    public boolean isCamera() {
+        return camera;
     }
-    public void setCameraActif(boolean cameraActif) {
-        this.cameraActif = cameraActif;
-    }
-    public int getIdRasberry() {
-        return IdRasberry;
-    }
-    public void setIdRasberry(int IdRasberry) {
-        this.IdRasberry = IdRasberry;
-    }  
+    public void setCamera(boolean camera) {
+        this.camera = camera;
+    } 
 }

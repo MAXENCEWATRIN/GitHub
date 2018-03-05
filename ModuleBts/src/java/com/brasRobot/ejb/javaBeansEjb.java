@@ -1,7 +1,7 @@
 package com.brasRobot.ejb;
+import com.brasRobot.JavaBeans.Moteur;
+import com.brasRobot.JavaBeans.Musicien;
 import com.brasRobot.JavaBeans.Preference;
-import com.brasRobot.JavaBeans.Rasberry;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -45,15 +45,14 @@ public class javaBeansEjb {
         System.out.println("Dans le ajouter preference ejb ");
         em.merge(p);
     }
-    //supprimer Preference
-    public String supprimerPreferenceEjb(Preference p) {//
-        System.out.println("Dans le suprimer Preference ejb ");
-        //em.merge(p);      
-        return "";
-    }
     //ajout de laser
-    public void ajouterLaserEjb(Rasberry r) {//
-        System.out.println("Dans le ajouter rasberry ejb ");
-        em.merge(r);
+    public void ajouterMusicienEjb(Musicien m) {
+        System.out.println("Dans le ajouter musicien ejb ");
+        em.merge(m);
+    } 
+    //ajout de moteur
+    public void ajouterMoteurEjb(Moteur m) {
+        System.out.println("Dans le ajouter moteur ejb ");
+        em.merge(m);
     }
 }

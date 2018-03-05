@@ -5,24 +5,29 @@ import javax.inject.Named;
 @Named
 @RequestScoped
 public class Liste implements Serializable {
-    //acceuil
+    //ACCEUIL
      public String accueil() {
      System.out.println("Dans l'accueil");        
         return "accueil";
     }
-    //laser(laser,camera,son)
-    public String laser() {
-    System.out.println("Dans le laser");
-      return "laser";
-    }   
-    //preference(list:nom,image)
+     //musicien
+    public String musicien() {
+     System.out.println("Dans musicien");        
+        return "musicien";
+    }
+    //preference
     public String preference() {
-    System.out.println("Dans la preference");
-      return "preference";
-    }  
-     //editer la preference(nom,image)
+     System.out.println("Dans la preference");        
+        return "preference";
+    }
+      //preferenceediter
     public String preferenceEditer() {
-    System.out.println("Dans la preferenceEditer");
-      return "preferenceEditer";
-    }  
+     System.out.println("Dans la preference editer");        
+        return "preferenceEditer";
+    }   
+    //preferenceediter
+    public String moteur() {
+     System.out.println("Dans le moteur");        
+        return "moteur";
+    }
 }

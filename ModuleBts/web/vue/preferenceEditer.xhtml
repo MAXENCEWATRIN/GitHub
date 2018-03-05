@@ -14,12 +14,14 @@
             <p:breadCrumb>
                 <p:menuitem action="#{liste.accueil()}" value="acceuil"/>
                 <p:menuitem action="#{liste.preference()}" value="preference" />
-            </p:breadCrumb> 
+            </p:breadCrumb>      
+            <!-- Titre -->
             <p:dataTable var="object" value="">         
                 <p:column>     
                     <f:facet name="header">editer preference</f:facet>
                 </p:column>
             </p:dataTable>
+            <!-- tableau -->
             <h:panelGrid>
                 <!-- creation du groupe de musique -->
                 <h:panelGrid columns="4" cellpadding="8"> <!--Taille -->
@@ -33,7 +35,7 @@
                     <p:inputText id="image" value="#{javaBeans.preference.image}" title="inserer une image" />
                     <p:tooltip id="toolTipImage" for="image" showEvent="focus" hideEvent="blur" />
                 </h:panelGrid>        
-                <!-- ajout de tout les classes vu au dessus-->
+                <!-- ajouter-->
                 <h:panelGrid columns="4" cellpadding="8"> <!--Taille -->
                     <p:commandButton action="#{javaBeans.ajouterPreference()}" value="Ajouter une preference"/> 
                 </h:panelGrid>
