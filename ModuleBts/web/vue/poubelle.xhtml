@@ -7,32 +7,142 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 
     <h:head>
         <title>test</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     </h:head>
     <h:body>
-               
-        <p:contentFlow value="#{imagesView.images}" var="image">
-            <p:graphicImage name="image/#{image}" styleClass="content" />
-            <div class="caption">#{image}</div>
-            
-        </p:contentFlow>
-        
+
+
+        <!-- son camera  -->
         <h:form>
-    <p:growl id="growl" showDetail="true" />
-             
-    <h3 style="margin-top: 0">Son caméra</h3>
-    <h:panelGrid columns="1" style="margin-bottom: 10px">
-        <p:inputText id="txt1" value="#{sliderView.number1}" />
-        <p:slider for="txt1" />
-    </h:panelGrid>
- </h:form>
+            <p:growl id="growl" showDetail="true" />
+
+            <h3 style="margin-top: 0">Son caméra</h3>
+            <h:panelGrid columns="1" style="margin-bottom: 10px">
+                <p:inputText id="txt1" value="#{sliderView.number1}" />
+                <p:slider for="txt1" />
+            </h:panelGrid>
+        </h:form>
+        <!-- End Son camera-->
+        <!-- Laser ajax  -->    
+        <h:form>
+            <p:growl id="msg" />
+
+            <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+
+                <h:outputText value="Laser : " />
+                <p:inputSwitch value="#{selectBooleanView.value2}">
+                    <p:ajax listener="#{selectBooleanView.addMessage}" update="msg" />
+                </p:inputSwitch>
+            </h:panelGrid>
+        </h:form> 
+
+        <!-- End Laser ajax  -->
+
+        <!-- Bouton de direction -->
+        <h:panelGrid columns="4" style="margin-bottom:10px" cellpadding="5">
+            <p:commandButton  oncomplete="PF('sidebar1').show()" />
+            <i class="glyphicon glyphicon-arrow-left"></i>
+
+
+
+            <p:commandButton  oncomplete="PF('sidebar2').show()" />
+            <i class="glyphicon glyphicon-arrow-right"></i>
+
+            <p:commandButton icon="" oncomplete="PF('sidebar3').show()" />
+            <i class="glyphicon glyphicon-arrow-up"></i>
+
+            <p:commandButton  oncomplete="PF('sidebar4').show()" />
+            <i class="glyphicon glyphicon-arrow-down"></i>
+
+        </h:panelGrid>
+        <!-- End bouton de direction  -->
+
+        <!-- début upload -->
+        <h:panelGrid columns="2">
+            <h:form>
+
+                <p:outputLabel value="nom du musicien/groupe :"/>
+                <p:inputText id="nomInstituteur" value="#{personnelBean.instituteur.nom}" required="true"/> 
+
+            </h:form>    </h:panelGrid>
+        <h:panelGrid columns="2">
+            <p:outputLabel value="photo :"/>
+
+            <h:form enctype="multipart/form-data">
+                <p:growl id="messages" showDetail="true" />
+
+                <p:fileUpload value="#{fileUploadView.file}" mode="simple" skinSimple="true"/>
+
+                <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadView.upload}" disabled="true" />
+            </h:form>
+        </h:panelGrid>
+        <!-- end upload -->
+
+
+        <!-- start carousel -->
         
+        <h:form id="form">
+    <p:carousel value="#{carouselView.cars}" headerText="Responsive" var="car" itemStyle="text-align:center" responsive="true">
+        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+            <f:facet name="header">
+                <p:graphicImage name="demo/images/car/#{car.brand}.gif"/> 
+            </f:facet>
+ 
+            <h:outputText value="Id:" />
+            <h:outputText value="#{car.id}" />
+ 
+            <h:outputText value="Year" />
+            <h:outputText value="#{car.year}" />
+ 
+            <h:outputText value="Color:" />
+            <h:outputText value="#{car.color}" style="color:#{car.color}"/>
+ 
+            <h:outputText value="Price" />
+            <h:outputText value="$#{car.price}" />
+        </p:panelGrid>
+ 
+        <f:facet name="footer">
+                In total there are #{fn:length(carouselView.cars)} cars.
+        </f:facet>
+    </p:carousel>
+    
+ 
+    <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="carDetail" style="text-align:center;">
+            <p:panelGrid  columns="2" rendered="#{not empty carouselView.musicienSelectionne}" columnClasses="label,value">
+                <f:facet name="header">
+                    <p:graphicImage name="demo/images/car/#{carouselView.car}-big.gif"/> 
+                </f:facet>
+ 
+                <h:outputText value="Id:" />
+                <h:outputText value="#{carouselView.selectedCar.id}" />
+ 
+                <h:outputText value="Year" />
+                <h:outputText value="#{carouselView.selectedCar.year}" />
+ 
+                <h:outputText value="Color:" />
+                <h:outputText value="#{carouselView.selectedCar.color}" style="color:#{carouselView.selectedCar.color}"/>
+ 
+                <h:outputText value="Price" />
+                <h:outputText value="$#{carouselView.selectedCar.price}" />
+            </p:panelGrid>
+        </p:outputPanel>
+    </p:dialog>
+</h:form>
+
         
+        <!-- end carousel  -->
+
+
+
+
     </h:body>
 </html>
