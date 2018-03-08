@@ -48,6 +48,10 @@ public class javaBeans {
         javaEjb.ajouterMoteurEjb(moteur);
         System.out.println("ajouter moteur réalisée avec succès");
     }
+    
+    
+    
+    
     //get-set
     public Musicien getMusicien() {
         return musicien;
