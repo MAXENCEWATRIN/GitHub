@@ -15,6 +15,7 @@ public class Musicien implements Serializable {
     int son;
     boolean laser;
     boolean camera;
+    String image;
 //get set
     public int getIdMusicien() {
         return IdMusicien;
@@ -46,4 +47,14 @@ public class Musicien implements Serializable {
     public void setCamera(boolean camera) {
         this.camera = camera;
     } 
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+
 }

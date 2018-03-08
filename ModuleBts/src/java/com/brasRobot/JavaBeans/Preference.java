@@ -12,7 +12,7 @@ public class Preference implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int IdPreference;
     String nomPreference;
-    String image;
+    
 //get set
     public String getNomPreference() {
         return nomPreference;
@@ -20,12 +20,7 @@ public class Preference implements Serializable {
     public void setNomPreference(String nomPreference) {
         this.nomPreference = nomPreference;
     }
-    public String getImage() {
-        return image;
-    }
-    public void setImage(String image) {
-        this.image = image;
-    }  
+    
     public int getIdPreference() {
         return IdPreference;
     }
