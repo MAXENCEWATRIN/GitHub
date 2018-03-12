@@ -30,8 +30,8 @@ public class javaBeans {
     }
 
     //message laser
-    public void addMessageLaser() {
-        System.out.println("Dans le laser");
+    public void addMessageLaser() { 
+        System.out.println("Dans le laser"); 
         javaEjb.addMessageLaserEjb(musicien.isLaser());
         String messageLaser = musicien.isLaser() ? "le laser est allumer" : "le laser est etteint";
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(messageLaser));
