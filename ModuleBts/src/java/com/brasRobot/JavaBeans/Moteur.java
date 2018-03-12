@@ -11,7 +11,9 @@ public class Moteur implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int idMoteur;
-    int  position;
+    int position;
+    int pasRevolution;
+    int pasInterval;
 //get set
     public int getIdMoteur() {
         return idMoteur;
@@ -25,4 +27,16 @@ public class Moteur implements Serializable {
     public void setPosition(int position) {
         this.position = position;
     }  
+    public int getPasRevolution() {
+        return pasRevolution;
+    }
+    public void setPasRevolution(int pasRevolution) {
+        this.pasRevolution = pasRevolution;
+    }
+    public int getPasInterval() {
+        return pasInterval;
+    }
+    public void setPasInterval(int pasInterval) {
+        this.pasInterval = pasInterval;
+    }   
 }
