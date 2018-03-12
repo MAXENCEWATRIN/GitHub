@@ -16,6 +16,7 @@ public class Musicien implements Serializable {
     boolean laser;
     boolean camera;
     String image;
+    
 //get set
     public int getIdMusicien() {
         return IdMusicien;
