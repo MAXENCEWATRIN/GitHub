@@ -20,17 +20,10 @@ and open the template in the editor.
     <h:body>
 
 
-        <!-- son camera  -->
-        <h:form>
-            <p:growl id="growl" showDetail="true" />
+        <EMBED  src= "http://192.168.43.114:8081"/>
 
-            <h3 style="margin-top: 0">Son caméra</h3>
-            <h:panelGrid columns="1" style="margin-bottom: 10px">
-                <p:inputText id="txt1" value="#{sliderView.number1}" />
-                <p:slider for="txt1" />
-            </h:panelGrid>
-        </h:form>
-        <!-- End Son camera-->
+
+
         <!-- Laser ajax  -->    
         <h:form>
             <p:growl id="msg" />
@@ -46,99 +39,28 @@ and open the template in the editor.
 
         <!-- End Laser ajax  -->
 
-        <!-- Bouton de direction -->
-        <h:panelGrid columns="4" style="margin-bottom:10px" cellpadding="5">
-            <p:commandButton  oncomplete="PF('sidebar1').show()" />
-            <i class="glyphicon glyphicon-arrow-left"></i>
+
+        <!--  formulaire ajout musicien -->
+        <h:form>
+            <h:panelGrid columns="3">
+
+                Musicien : 
+                <p:inputText value="nom" required="true"/>
+                <p:growl id="growl" life="2000" />
+                <p:commandButton value="Enregistrer" id="ajax" update="growl" actionListener="#{buttonView.buttonAction}" styleClass="ui-priority-primary" />
+               
+            </h:panelGrid>
+        </h:form>
 
 
 
-            <p:commandButton  oncomplete="PF('sidebar2').show()" />
-            <i class="glyphicon glyphicon-arrow-right"></i>
-
-            <p:commandButton icon="" oncomplete="PF('sidebar3').show()" />
-            <i class="glyphicon glyphicon-arrow-up"></i>
-
-            <p:commandButton  oncomplete="PF('sidebar4').show()" />
-            <i class="glyphicon glyphicon-arrow-down"></i>
-
-        </h:panelGrid>
-        <!-- End bouton de direction  -->
-
-        <!-- début upload -->
-        <h:panelGrid columns="2">
-            <h:form>
-
-                <p:outputLabel value="nom du musicien/groupe :"/>
-                <p:inputText id="nomInstituteur" value="#{personnelBean.instituteur.nom}" required="true"/> 
-
-            </h:form>    </h:panelGrid>
-        <h:panelGrid columns="2">
-            <p:outputLabel value="photo :"/>
-
-            <h:form enctype="multipart/form-data">
-                <p:growl id="messages" showDetail="true" />
-
-                <p:fileUpload value="#{fileUploadView.file}" mode="simple" skinSimple="true"/>
-
-                <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadView.upload}" disabled="true" />
-            </h:form>
-        </h:panelGrid>
-        <!-- end upload -->
 
 
-        <!-- start carousel -->
-        
-        <h:form id="form">
-    <p:carousel value="#{carouselView.cars}" headerText="Responsive" var="car" itemStyle="text-align:center" responsive="true">
-        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
-            <f:facet name="header">
-                <p:graphicImage name="demo/images/car/#{car.brand}.gif"/> 
-            </f:facet>
- 
-            <h:outputText value="Id:" />
-            <h:outputText value="#{car.id}" />
- 
-            <h:outputText value="Year" />
-            <h:outputText value="#{car.year}" />
- 
-            <h:outputText value="Color:" />
-            <h:outputText value="#{car.color}" style="color:#{car.color}"/>
- 
-            <h:outputText value="Price" />
-            <h:outputText value="$#{car.price}" />
-        </p:panelGrid>
- 
-        <f:facet name="footer">
-                In total there are #{fn:length(carouselView.cars)} cars.
-        </f:facet>
-    </p:carousel>
-    
- 
-    <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-        <p:outputPanel id="carDetail" style="text-align:center;">
-            <p:panelGrid  columns="2" rendered="#{not empty carouselView.musicienSelectionne}" columnClasses="label,value">
-                <f:facet name="header">
-                    <p:graphicImage name="demo/images/car/#{carouselView.car}-big.gif"/> 
-                </f:facet>
- 
-                <h:outputText value="Id:" />
-                <h:outputText value="#{carouselView.selectedCar.id}" />
- 
-                <h:outputText value="Year" />
-                <h:outputText value="#{carouselView.selectedCar.year}" />
- 
-                <h:outputText value="Color:" />
-                <h:outputText value="#{carouselView.selectedCar.color}" style="color:#{carouselView.selectedCar.color}"/>
- 
-                <h:outputText value="Price" />
-                <h:outputText value="$#{carouselView.selectedCar.price}" />
-            </p:panelGrid>
-        </p:outputPanel>
-    </p:dialog>
-</h:form>
 
-        
+
+
+
+
         <!-- end carousel  -->
 
 
