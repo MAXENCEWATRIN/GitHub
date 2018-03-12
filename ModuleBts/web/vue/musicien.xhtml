@@ -22,22 +22,22 @@
             </p:dataTable>
             <!--corps de texte -->
             <p:growl id="msg" />
-            <h:panelGrid columns="2" cellpadding="5">
-                 <!--nom -->
-                <h:outputText value="nom du musique:" /><!--libelle -->
-                <p:inputText id="groupe" value="#{javaBeans.musicien.nom}" title="inserer un musicien" />
+            <h:panelGrid columns="5" cellpadding="5">
+                <!--nom -->
+                <h:outputText value="Nom de la musique:" />
+                <p:inputText id="groupe" value="#{javaBeans.musicien.nom}" title="Inserer un musicien" />
                 <p:tooltip id="toolTipIdentifiant" for="groupe" showEvent="focus" hideEvent="blur" />
-                 <!--camera -->               
+                <!--camera -->               
                 <h:outputText value="Camera:" />
                 <p:selectBooleanCheckbox value="#{javaBeans.musicien.camera}">
                     <p:ajax update="msg" listener="#{javaBeans.addMessageCamera()}" />
                 </p:selectBooleanCheckbox>
                 <!--laser -->
-                <h:outputText value="laser:" />
+                <h:outputText value="Laser:" />
                 <p:selectBooleanCheckbox value="#{javaBeans.musicien.laser}">
                     <p:ajax update="msg" listener="#{javaBeans.addMessageLaser()}" />
                 </p:selectBooleanCheckbox>
-                 <!--son -->
+                <!--son -->
                 <h:outputLabel for="minMax" value="Son:" />
                 <p:spinner id="minMax" value="#{javaBeans.musicien.son}" min="0" max="100" />   
             </h:panelGrid>             
