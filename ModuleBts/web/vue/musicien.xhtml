@@ -40,8 +40,24 @@
                 <!--son -->
                 <h:outputLabel for="minMax" value="Son:" />
                 <p:spinner id="minMax" value="#{javaBeans.musicien.son}" min="0" max="100" />   
-            </h:panelGrid>             
-            <!-- ajout de tout les classes vu au dessus-->
+            </h:panelGrid> 
+
+
+
+            <!--image -->
+            <h:form>
+                <p:fileUpload fileUploadListener="#{registerBean.handleFileUpload}" mode="advanced"
+                              update="messages" auto="true" sizeLimit="100000000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+
+                <p:growl id="messages" showDetail="true" />
+            </h:form>
+
+
+
+
+
+
+            <!-- ajout de toutes les classes vu au dessus-->
             <h:panelGrid columns="4" cellpadding="8">
                 <p:commandButton action="#{javaBeans.ajouterMusicien()}" value="Ajouter le musicien"/> 
             </h:panelGrid>
