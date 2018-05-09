@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"     
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+  
+    
+    <!--enlever Moteur pour le rendre fonctionelle-->
+    <!--entete-->
+    <h:head>
+        <title>final</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <body> 
+        <h:form>           
+        <p:growl id="growl" sticky="true" showDetail="true"/>
+         
+         
+            <!-- toggle barre musicien -->
+            <p:fieldset legend="musicien" toggleable="true" toggleSpeed="1000">
+                <p:ajax event="toggle" listener="#{adminBean.handleToggle}"/>
+                
+                
+                
+                
+                
+                <!-- editer musicien -->
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:tab id="personal" title="ajouter/editer Musicien">
+                        <p:panel header="ajouter/editer Musicien">
+                        <p:messages />
+                            <h:panelGrid columns="2" >
+                    
+                                <!--Editer -->
+                                <h:inputHidden id="idMusicien" value="#{musicienBean.musicien.idMusicien}"/>
+                
+                                <!-- Nom-->
+                                <h:outputText value="nom :" />
+                                <p:inputText value="#{musicienBean.musicien.nom}" />
+                    
+                                <!-- laser-->
+                                <h:outputText value="laser :" />
+                                <p:selectBooleanCheckbox value="#{musicienBean.musicien.laser}"/>
+                    
+                                <!-- image-->
+                                <h:outputText value="image :" />
+                                <p:inputText value="#{musicienBean.musicien.image}" />
+                    
+                                <!-- Ajouter un musicien -->
+                                <p:growl id="message" showDetail="true" /> 
+                                <p:commandButton value="Ajouter un musicien" action="#{musicienBean.editerMusicien()}" update="message" >
+                                    <p:confirm header="Confirmation" message="êtes-vous sur?" icon="ui-icon-alert" />
+                                </p:commandButton>
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                    <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                </p:confirmDialog> 
+                    
+                            </h:panelGrid>
+                        </p:panel>
+                    </p:tab>   
+                </h:panelGrid>
+                 <!-- lister musicien -->
+            <p:tab id="contact" title="Contact">
+                <p:panel header="lister Musicien">
+                    <p:dataTable value="#{musicienBean.listeMusicien}"  paginator="true" rows="5" var="musicien">        
+                  
+                        <!--nom-->
+                        <p:column width="20%">
+                            <center>
+                                <f:facet name="header">Nom</f:facet>
+                                <h:outputText value="#{musicien.nom}"/>
+                            </center>
+                        </p:column>     
+                
+                        <!--laser-->
+                        <p:column width="20%">
+                            <center>
+                                <f:facet name="header">laser</f:facet>
+                                <h:outputText value="#{musicien.laser}"/>
+                            </center>
+                        </p:column>     
+                
+                        <!--image-->
+                        <p:column width="20%">
+                            <center>
+                                <f:facet name="header">image</f:facet>
+                                <p:graphicImage  value="#{musicien.image}" width="100" height="100"/>
+                            </center>
+                        </p:column>     
+                
+                        <!--supprimer-->
+                        <p:column width="20%">     
+                            <f:facet name="header">supprimer</f:facet>
+                            <p:growl id="message" showDetail="true" /> 
+                            <p:commandButton value="supprimer" action="#{musicienBean.supprimer(musicien)}" update="message" >
+                                <p:confirm header="Confirmation" message="êtes-vous sur?" icon="ui-icon-alert" />
+                            </p:commandButton>
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                            </p:confirmDialog>
+                        </p:column> 
+                
+                        <!--Editer-->
+                        <p:column width="20%">     
+                            <center>
+                                <f:facet name="header">Editer</f:facet>
+                                <p:commandButton value="Editer" action="#{musicienBean.editer(musicien)}" ajax="false"/>          
+                            </center>
+                        </p:column> 
+                
+                    </p:dataTable>
+                </p:panel> 
+            </p:tab>  
+             
+            </p:fieldset> 
+             <!-- toggle barre Preference -->
+            <p:fieldset legend="Preference" toggleable="true" toggleSpeed="1000">
+                <p:ajax event="toggle" listener="#{adminBean.handleToggle}"/>
+                
+                <!-- editer Preference -->
+                <h:panelGrid columns="2" cellpadding="5">       
+                    <p:tab id="personal2" title="ajouter/editer Preference">
+                        <p:panel header="ajouter/editer Preference">
+                        <p:messages />
+                            <h:panelGrid columns="2" >
+                    
+                            <!--Editer -->
+                            <h:inputHidden id="idPreference" value="#{preferenceBean.preference.idPreference}"/>
+                    
+                            <!-- libelle-->
+                            <h:outputText value="libelle " />
+                            <p:inputText value="#{preferenceBean.preference.libelle}" />
+                    
+                            <!-- lier un musicien-->                           
+                                <h:outputText value="musicien " />
+                            <p:selectOneMenu  id="musicien" value="#{preferenceBean.preference.musicien.idMusicien}">
+                                <f:selectItems value="#{musicienBean.listeMusicien}"  var="musicien" itemValue="#{musicien.idMusicien}" itemLabel="#{musicien.nom}"/>                  
+                            </p:selectOneMenu>
+                                          
+                            <!-- Ajouter une preference -->
+                            <p:growl id="message2" showDetail="true" /><!-- message2 pour instance preference sans demander musicien --> 
+                            <p:commandButton value="Ajouter une preference" action="#{preferenceBean.editerPreference()}" update="message" >
+                                <p:confirm header="Confirmation" message="êtes-vous sur?" icon="ui-icon-alert" />
+                            </p:commandButton>
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                            </p:confirmDialog> 
+                    
+                            </h:panelGrid>
+                        </p:panel>
+                    </p:tab>
+                </h:panelGrid>
+                <!-- lister preference -->   
+                <p:tab id="confirm" title="Confirmation"> 
+                <p:panel header="lister preference">
+                    <p:dataTable value="#{preferenceBean.listePreferences}"  paginator="true" rows="5" var="preference">
+                 
+                        <!--libelle-->
+                        <p:column width="30%">
+                            <center>
+                                <f:facet name="header">Libellé</f:facet>
+                                <h:outputText value="#{preference.libelle}"/>
+                            </center>
+                        </p:column>      
+                        <!--lie a Musicien-->
+                        <p:column width="30%">
+                            <center>
+                                <f:facet name="header">Musicien</f:facet>
+                                <h:outputText value="#{preference.musicien.nom}"/>
+                            </center>
+                        </p:column>  
+
+                        <!--supprimer-->
+                        <p:column width="20%">     
+                            <f:facet name="header">supprimer</f:facet>
+                            <p:growl id="message" showDetail="true" /> 
+                            <p:commandButton value="supprimer" action="#{preferenceBean.supprimer(preference)}" update="message" >
+                                <p:confirm header="Confirmation" message="êtes-vous sur?" icon="ui-icon-alert" />
+                            </p:commandButton>
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                            </p:confirmDialog>
+                        </p:column>
+                
+                        <!--Editer-->
+                        <p:column width="20%">     
+                            <center>
+                                <f:facet name="header">Editer</f:facet>
+                                <p:commandButton value="Editer" action="#{preferenceBean.editer(preference)}" ajax="false"/>          
+                            </center>
+                        </p:column> 
+                
+                    </p:dataTable> 
+                </p:panel>
+            </p:tab>
+                
+            </p:fieldset>
+             <p:fieldset legend="moteur" toggleable="true" toggleSpeed="1000">
+                <p:ajax event="toggle" listener="#{adminBean.handleToggle}"/>
+                   <!-- editer Moteur -->
+                <h:panelGrid columns="2" cellpadding="5">    
+                    <p:tab id="personal3" title="ajouter/editer Moteur">
+                        <p:panel header="ajouter/editer Moteur">
+                        <p:messages />
+                            <h:panelGrid columns="2" >
+                    
+                                <!--Editer -->
+                                <h:inputHidden id="idMoteur" value="#{moteurBean.moteur.idMoteur}"/>
+                    
+                                <!-- libelle-->
+                                <h:outputText value="libelle " />
+                                <p:inputText value="#{moteurBean.moteur.libelle}" />
+                    
+                                <!-- position a mettre en barre-->
+                                <h:outputText value="position " />
+                                <p:inputText value="#{moteurBean.moteur.position}" />
+                                   
+                                <!-- lier un preference-->
+                                <h:outputText value="preference " />
+                                <p:selectOneMenu  id="preference" value="#{moteurBean.moteur.preference.idPreference}">
+                                    <f:selectItems value="#{preferenceBean.listePreferences}"  var="preference" itemValue="#{preference.idPreference}" itemLabel="#{preference.libelle}"/>                     
+                                </p:selectOneMenu>
+
+                         
+                                <!-- Ajouter un Moteur -->
+                                <p:growl id="message3" showDetail="true" />
+                                <p:commandButton value="Ajouter un Moteur" action="#{moteurBean.editerMoteur()}" update="message3" >
+                                    <p:confirm header="Confirmation" message="êtes-vous sur?" icon="ui-icon-alert" />
+                                </p:commandButton>
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                    <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                </p:confirmDialog> 
+                    
+                            </h:panelGrid>
+                        </p:panel>
+                    </p:tab>
+                </h:panelGrid>
+                       
+     
+           <!-- lister Moteur -->   
+            <p:tab id="confirm3" title="Confirmation"> 
+                <p:panel header="lister Moteur">
+                    <p:dataTable value="#{moteurBean.listeMoteur}"  paginator="true" rows="5" var="Moteur">
+                 
+                        <!--libelle-->
+                        <p:column width="30%">
+                            <center>
+                                <f:facet name="header">Libellé</f:facet>
+                                <h:outputText value="#{Moteur.libelle}"/>
+                            </center>
+                        </p:column>      
+                        <!--position-->
+                        <p:column width="30%">
+                            <center>
+                                <f:facet name="header">position</f:facet>
+                                <h:outputText value="#{Moteur.position}"/>
+                            </center>
+                        </p:column>  
+                        <!--lie a preference-->
+                        <p:column width="30%">
+                            <center>
+                                <f:facet name="header">preference</f:facet>
+                                <h:outputText value="#{Moteur.preference.libelle}"/>
+                            </center>
+                        </p:column>  
+
+                        <!--supprimer-->
+                        <p:column width="20%">     
+                            <f:facet name="header">supprimer</f:facet>
+                            <p:growl id="message3" showDetail="true" /> 
+                            <p:commandButton value="supprimer" action="#{moteurBean.supprimer(Moteur)}" update="message3" >
+                                <p:confirm header="Confirmation" message="êtes-vous sur?" icon="ui-icon-alert" />
+                            </p:commandButton>
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                            </p:confirmDialog>
+                        </p:column>
+                
+                        <!--Editer-->
+                        <p:column width="20%">     
+                            <center>
+                                <f:facet name="header">Editer</f:facet>
+                                <p:commandButton value="Editer" action="#{moteurBean.editer(Moteur)}" ajax="false"/>          
+                            </center>
+                        </p:column> 
+                
+                    </p:dataTable> 
+                </p:panel>
+            </p:tab>
+          
+            </p:fieldset>
+           
+        </h:form>
+    </body>
+</html>

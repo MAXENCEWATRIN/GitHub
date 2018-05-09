@@ -5,7 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <!-- entete-->
- <h:head>
+    <h:head>
         <title>Acceuil</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>      
     </h:head>
@@ -13,15 +13,13 @@
         <h:form>
             <!-- barre de menu -->
             <p:breadCrumb>
-                <p:menuitem action="#{liste.accueil()}" value="acceuil" />
-                <p:menuitem action="#{liste.musicien()}" value="musicien" />             
-                <p:menuitem action="#{liste.preference()}" value="preference" />        
-                <p:menuitem action="#{liste.moteur()}" value="moteur" />
+                <p:menuitem action="accueil.jsf" value="acceuil" />
+                <p:menuitem action="admin.jsf" value="admin" />
             </p:breadCrumb> 
             <!--corps de texte-->         
             <p:dataTable var="object" value="">         
                 <p:column>     
-                    <f:facet name="header">Acceuil</f:facet>
+                    <f:facet name="header">Accueil</f:facet>
                 </p:column>
             </p:dataTable>
         </h:form>

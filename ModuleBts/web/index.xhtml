@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Gestion des musiciens</title>
+        <!-- inclure la feuille de CSS front-->
+        <h:outputStylesheet library="css" name="styles.css"  />
+        </h:head>
+    <h:body style="background-color: darkgrey">
+        
+       
+
+        
+        <!-- affichage des messages d'erreur en sticky -->
+        <p:growl showDetail="true" id="messages" sticky="5000"/>
+
+        <img src="resources/img/player.png" height="500px" width="700px" style="position: absolute; top: 5px; left :50px;"/>
+        <!--Slider vertical-->
+        <h:panelGrid columns="1" style="position: absolute;margin-bottom: 10px; top: 25px">
+            <h:inputHidden id="vertical" value="#{ihmBean.sliderVertical}"/> 
+            <p:slider for="vertical" type="vertical" style="height: 450px">
+                <p:ajax event="slideEnd" listener="#{ihmBean.onSlideEndVert}" update="messages" />
+            </p:slider>
+        </h:panelGrid>
+
+
+        <!-- slider horizontal-->
+        <h:panelGrid columns="1" style="position: absolute;margin-bottom: 10px; top: 550px" width="750px">
+            <h:inputHidden id="horizontal" value="#{ihmBean.sliderHorizontal}" /> 
+            <p:slider for="horizontal">
+                <p:ajax event="slideEnd" listener="#{ihmBean.onSlideEnd}" update="messages" />
+            </p:slider>
+        </h:panelGrid>
+
+        <div class="divFormulaire">
+            <!-- formulaire -->
+            <h:form enctype="multipart/form-data" id="formulaireMusicien">
+                <!-- champ cache pour la modification -->
+                <h:inputHidden value="#{ihmBean.musicien.idMusicien}"/>
+                <h:panelGrid columns="1" cellpadding="0" >
+                    <h:outputLabel value="Libellé :"/>
+                    <p:inputText value="#{ihmBean.musicien.nom}" required="true" id="libelle" label="Libellé" placeholder="Entrez un nom"/>
+                    <p:fileUpload label="Image" auto="true" fileUploadListener="#{ihmBean.upload}" mode="advanced" id="file" sizeLimit="10000000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"  update="imageMusicien imageMusicienHidden" > 
+                        <h:graphicImage value="/imgmusicien/#{ihmBean.musicien.image}" width="80" id="imageMusicien" rendered="#{ihmBean.musicien.image!=''}"/></p:fileUpload>
+                    <h:inputHidden value="#{ihmBean.musicien.image}" id="imageMusicienHidden"/>
+                    <br/>
+                    <p:panelGrid columns="2" >
+                    <p:commandButton action="#{ihmBean.editer()}" value="Editer" ajax="true" update="messages formulaireMusicien carrousselMusicien"/>
+                    <p:commandButton action="#{ihmBean.supprimer()}" value="Supprimer" ajax="true" update="messages formulaireMusicien carrousselMusicien  formListePreference:tabPreference"/>
+                    </p:panelGrid>
+                </h:panelGrid>
+            </h:form>
+        </div>
+        <div class="divFormulairePref">
+            <h:form id="formulaireEditerPreference">
+                <!-- champ cache pour le musicien -->
+                <h:inputHidden value="#{ihmBean.musicien.idMusicien}"/>
+                <!-- charger les préférences du musicien -->
+                <h:outputLabel value="Préférence :"/> 
+                <p:inputText value="#{ihmBean.preference.libelle}" required="true" id="preference" label="Préférence" placeholder="nom de votre préférence"/>
+                <p:commandButton action="#{ihmBean.editerPreference()}" value="Ajouter" update="formulaireEditerPreference formListePreference:tabPreference messages"/>
+                <br></br> 
+                <!-- pour vérifier l'id -->
+                <p:outputLabel value="#{ihmBean.musicien.idMusicien}"></p:outputLabel>
+            </h:form>    
+        </div>
+
+
+        <div class="divCaroussel">
+            <!-- carrousel -->
+            <h:form id="carrousselMusicien">
+                <p:contentFlow value="#{ihmBean.listeMusiciens}" var="musicien" style="height: 300px;background-color:  transparent;">
+                    <div class="caption">#{musicien.nom.toUpperCase()}</div>
+                    <p:commandLink styleClass="content" action="#{ihmBean.carroussel()}" update="formulaireMusicien  formulaireEditerPreference formListePreference">
+                        <p:graphicImage url="/imgmusicien/#{musicien.image}" width="200"/>
+                        <f:param name="idMusicien" value="#{musicien.idMusicien}" />
+                    </p:commandLink>
+                </p:contentFlow>
+            </h:form>
+        </div>
+        <div class="divTableau">
+            <!-- tableau des préférences -->
+            <h:form id="formListePreference">
+                <!-- champ cache pour le musicien -->
+                <h:inputHidden value="#{ihmBean.musicien.idMusicien}"/>
+                <p:dataTable value="#{ihmBean.getListePreferencesMusicien()}" var="preference" id="tabPreference">
+                    <f:facet name="header">Liste des préférences</f:facet>
+                    <p:column>
+                        <f:facet name="header">Libellé</f:facet>
+                        <h:outputText value="#{preference.libelle.toUpperCase()}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">idPreference</f:facet>
+                        <h:outputText value="#{preference.idPreference}"/>
+                    </p:column>
+                    <p:column width="180" style="text-align: center">
+                        <f:facet name="header">Gestion</f:facet>                    
+                        <p:commandButton action="#{ihmBean.supprimerPref(preference)}" ajax="true" update="tabPreference messages" title="Supprimer" icon="ui-icon-trash"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+
+
+
+        </div>
+        </h:body>
+</html>
+
