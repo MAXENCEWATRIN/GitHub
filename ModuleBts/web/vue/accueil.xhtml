@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<!-- entete-->
+    <h:head>
+        <title>Acceuil</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>      
+    </h:head>
+    <h:body>
+        <h:form>
+            <!-- barre de menu -->
+            <p:breadCrumb>
+                <p:menuitem action="accueil.jsf" value="acceuil" />
+                <p:menuitem action="admin.jsf" value="admin" />
+            </p:breadCrumb> 
+            <!--corps de texte-->         
+            <p:dataTable var="object" value="">         
+                <p:column>     
+                    <f:facet name="header">Accueil</f:facet>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>

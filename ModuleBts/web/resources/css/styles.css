@@ -1,0 +1,76 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 28 mars 2018, 15:11:19
+*/
+
+/* Style du carroussel */
+.caption{
+        font-size: 20pt;
+    font-weight: 500;
+    font-variant-position: normal;    
+    background-color: #F4F4F4;
+    color:black;
+    
+    text-transform: capitalize;
+
+}
+
+.divFormulaire{
+    position: absolute;
+    top: 20px;
+    left: 1000px;    
+    text-align: left;
+}
+.divFormulairePref{
+    position: absolute;
+    top: 350px;
+    left: 1000px;    
+    text-align: center;
+}
+
+.divCaroussel{
+    position: absolute;
+    top: 600px;
+    left: 20px;    
+    width: 50%;
+    
+}
+
+.divTableau{
+    position: absolute;
+    top: 600px;
+    left: 1000px;    
+    width: 40%;
+    
+}
+
+.upload{
+    width:200px;
+    background-color: darkgrey;
+}
+
+.topleft {
+  position: absolute;
+  top     : 0;
+  left    : 0;
+}
+
+.sliderVertical {
+   
+    height: 30%;
+    
+}
+
+.player{
+    
+    position: absolute;
+    top: 5px;
+    left :50px;
+    
+    
+}
+
